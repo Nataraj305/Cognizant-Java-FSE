@@ -6,12 +6,46 @@
            http://www.springframework.org/schema/beans
            https://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <bean id="country" class="com.cognizant.spring_learn.model.country">
-
+    <!-- India -->
+    <bean id="india" class="com.cognizant.spring_learn.model.Country">
         <property name="code" value="IN"/>
-
         <property name="name" value="India"/>
+    </bean>
 
+    <!-- United States -->
+    <bean id="usa" class="com.cognizant.spring_learn.model.Country">
+        <property name="code" value="US"/>
+        <property name="name" value="United States"/>
+    </bean>
+
+    <!-- Japan -->
+    <bean id="japan" class="com.cognizant.spring_learn.model.Country">
+        <property name="code" value="JP"/>
+        <property name="name" value="Japan"/>
+    </bean>
+
+    <!-- Germany -->
+    <bean id="germany" class="com.cognizant.spring_learn.model.Country">
+        <property name="code" value="DE"/>
+        <property name="name" value="Germany"/>
+    </bean>
+
+    <!-- Bean used for /country -->
+    <bean id="country" class="com.cognizant.spring_learn.model.Country">
+        <property name="code" value="IN"/>
+        <property name="name" value="India"/>
+    </bean>
+
+    <!-- List of countries -->
+    <bean id="countryList" class="java.util.ArrayList">
+        <constructor-arg>
+            <list>
+                <ref bean="india"/>
+                <ref bean="usa"/>
+                <ref bean="japan"/>
+                <ref bean="germany"/>
+            </list>
+        </constructor-arg>
     </bean>
 
 </beans>

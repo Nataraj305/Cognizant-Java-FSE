@@ -8,6 +8,11 @@ public class Country {
     public Country() {
     }
 
+    public Country(String code, String name) {
+        this.code = code;
+        this.name = name;
+    }
+
     public String getCode() {
         return code;
     }
