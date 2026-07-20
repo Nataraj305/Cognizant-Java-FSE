@@ -1,0 +1,16 @@
+.course-details {
+
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 450px;
+
+}
+
+a {
+
+  text-decoration: none;
+  color: blue;
+  font-weight: bold;
+
+}

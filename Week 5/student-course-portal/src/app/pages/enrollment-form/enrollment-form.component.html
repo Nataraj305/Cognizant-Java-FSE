@@ -1,0 +1,148 @@
+<h2>Course Enrollment Form</h2>
+
+<form #enrollForm="ngForm" (ngSubmit)="onSubmit(enrollForm)">
+
+  <div>
+
+    <label>Student Name</label><br>
+
+    <input
+      type="text"
+      name="studentName"
+      [(ngModel)]="student.studentName"
+      required
+      minlength="3"
+      #nameCtrl="ngModel">
+
+    @if (nameCtrl.touched && nameCtrl.errors?.['required']) {
+      <div style="color:red;">
+        Name is required
+      </div>
+    }
+
+    @if (nameCtrl.touched && nameCtrl.errors?.['minlength']) {
+      <div style="color:red;">
+        Name must be at least 3 characters
+      </div>
+    }
+
+  </div>
+
+  <br>
+
+  <div>
+
+    <label>Email</label><br>
+
+    <input
+      type="email"
+      name="studentEmail"
+      [(ngModel)]="student.studentEmail"
+      required
+      email
+      #emailCtrl="ngModel">
+
+    @if (emailCtrl.touched && emailCtrl.errors?.['required']) {
+      <div style="color:red;">
+        Email is required
+      </div>
+    }
+
+    @if (emailCtrl.touched && emailCtrl.errors?.['email']) {
+      <div style="color:red;">
+        Invalid Email
+      </div>
+    }
+
+  </div>
+
+  <br>
+
+  <div>
+
+    <label>Course ID</label><br>
+
+    <input
+      type="number"
+      name="courseId"
+      [(ngModel)]="student.courseId"
+      required
+      #courseCtrl="ngModel">
+
+    @if (courseCtrl.touched && courseCtrl.invalid) {
+      <div style="color:red;">
+        Course ID is required
+      </div>
+    }
+
+  </div>
+
+  <br>
+
+  <div>
+
+    <label>Preferred Semester</label>
+
+    <select
+      name="preferredSemester"
+      [(ngModel)]="student.preferredSemester">
+
+      <option>Odd</option>
+      <option>Even</option>
+
+    </select>
+
+  </div>
+
+  <br>
+
+  <div>
+
+    <input
+      type="checkbox"
+      name="agreeToTerms"
+      [(ngModel)]="student.agreeToTerms"
+      required
+      #termsCtrl="ngModel">
+
+    I agree to the Terms & Conditions
+
+    @if (termsCtrl.touched && !student.agreeToTerms) {
+      <div style="color:red;">
+        Please accept the terms.
+      </div>
+    }
+
+  </div>
+
+  <br>
+
+  <button
+    type="submit"
+    [disabled]="enrollForm.invalid">
+
+    Submit
+
+  </button>
+
+  &nbsp;
+
+  <button
+    type="button"
+    (click)="enrollForm.resetForm()">
+
+    Reset
+
+  </button>
+
+</form>
+
+@if (submitted) {
+
+<div class="success">
+
+Enrollment request submitted successfully!
+
+</div>
+
+}

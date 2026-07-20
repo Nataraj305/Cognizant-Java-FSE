@@ -1,0 +1,36 @@
+<h2>Available Courses</h2>
+
+@if (loading$ | async) {
+
+<p>Loading courses...</p>
+
+} @else {
+
+@if ((courses$ | async)?.length) {
+
+<div class="course-container">
+
+@for (course of (courses$ | async); track trackByCourseId($index, course)) {
+
+<app-course-card
+  [course]="course"
+  [isEnrolled]="isCourseEnrolled(course.id)"
+  (enroll)="onCourseEnroll($event)"
+  (unenroll)="onCourseUnenroll($event)">
+</app-course-card>
+
+<button (click)="viewCourse(course.id)">
+  View Details
+</button>
+
+}
+
+</div>
+
+} @else {
+
+<p>No courses available.</p>
+
+}
+
+}

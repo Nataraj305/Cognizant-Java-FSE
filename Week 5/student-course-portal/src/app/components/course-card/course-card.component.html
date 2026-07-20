@@ -1,0 +1,31 @@
+<div
+  class="course-card"
+  [ngClass]="cardClasses"
+  [ngStyle]="{
+    border: isEnrolled ? '2px solid green' : '1px solid #ccc'
+  }"
+  appHighlight="lightyellow">
+
+  <h3>{{ course.name }}</h3>
+
+  <p><strong>Course Code:</strong> {{ course.code }}</p>
+
+  <p><strong>Credits:</strong> {{ course.credits | creditLabel }}</p>
+
+  <p><strong>Status:</strong> {{ course.gradeStatus }}</p>
+
+  <button (click)="toggleEnrollment()">
+    {{ isEnrolled ? 'Unenroll' : 'Enroll' }}
+  </button>
+
+  <button (click)="toggleDetails()">
+    {{ isExpanded ? 'Hide Details' : 'Show Details' }}
+  </button>
+
+  @if (isExpanded) {
+    <div class="details">
+      <p>Course ID: {{ course.id }}</p>
+    </div>
+  }
+
+</div>
