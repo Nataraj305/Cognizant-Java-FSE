@@ -1,0 +1,2 @@
+Welcome from Master Branch
+Welcome from ConflictBranch
